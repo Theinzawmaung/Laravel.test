@@ -17,14 +17,14 @@
                 <h5 class="card-title">saaaaa</h5>
                 <p><strong>Status:</strong>{{ $ticket->status? 'Opened':'Closed' }}</p>
             <p class="card-text">{{ $ticket->content }}</p>
-            <a href="{{ action('TicketsController@edit',$ticket->slug) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ Route('admin.tickets.edit',$ticket->slug) }}" class="btn btn-primary">Edit</a>
             
             <a href="#" class=" btn btn-danger" onclick="javascript: event.preventDefault(); document.getElementById('delete-form').submit();">
                 Delete
             </a>
             
            
-            <form action="{{ action('TicketsController@destroy',$ticket->slug) }}" method="POST" id="delete-form" style="display:none">
+            <form action="{{Route('admin.tickets.destroy',$ticket->slug) }}" method="POST" id="delete-form" style="display:none">
                 @csrf
                 @method('DELETE')
             </form>
@@ -44,7 +44,7 @@
             <h5 class="card-header">Replay</h5>
             <div class="card-body">
                     @include('includes/status')
-            <form action="{{ action('CommentsController@newComment') }}" method="post">
+            <form action="{{ Route('newComment',$ticket->slug) }}" method="post">
                     @csrf
                     <div class="form-group">
                     <input type="hidden" name="post_id" value="{{ $ticket->id }}">

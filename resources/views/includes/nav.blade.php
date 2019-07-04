@@ -30,9 +30,12 @@
             @else
             
             @hasanyrole('admin|manager')
-            <li class="nav-item {{ Request::is('tickets') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('admin/tickets') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.tickets.index') }}">Tickets</a>
              </li>
+             <li class="nav-item {{ Request::is('admin') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('admin.pages.home') }}">Admin</a>
+           </li>
              @endhasanyrole()
              
               

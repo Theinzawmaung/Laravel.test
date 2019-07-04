@@ -27,8 +27,8 @@
           <div class="card" style="margin:20px 0;">
             <h4 class="card-header">Manage Posts</h4>
             <div class="card-body">
-              <a href="" class="btn btn-light"> All Posts</a>
-              <a href="" class="btn btn-primary">Create Post</a>
+            <a href="{{ route('admin.posts.index') }}" class="btn btn-light"> All Posts</a>
+              <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Create Post</a>
             </div>
           </div>
            

@@ -26,8 +26,10 @@ Route::get('/contact', 'TicketsController@create')->name('create');
  Route::post('/contact', 'TicketsController@store')->name('store');
 
  Route::group(['prefix'=>'admin','as'=>'admin.','namespace'=>'Admin','middleware'=>['manager']], function(){
+
+    Route::get('/', 'PagesController@home')->name('pages.home');
+   
     Route::name('tickets.')->group(function(){
-        Route::get('/', 'PagesController@home')->name('pages.home');
         Route::get('/tickets','TicketsController@index')->name('index');
         Route::get('/tickets/{slug}','TicketsController@show')->name('show');
         Route::get('/tickets/{slug}/edit','TicketsController@edit')->name('edit');
@@ -45,6 +47,13 @@ Route::get('/contact', 'TicketsController@create')->name('create');
         Route::get('users','UsersController@index')->name('index');
         Route::get('users/{id?}/edit', 'UsersController@edit')->name('edit');
         Route::post('users/{id?}/edit','UsersController@update')->name('update');
+    });
+    Route::name('posts.')->group(function(){
+        Route::get('posts', 'PostsController@index')->name('index');
+        Route::get('posts/create','PostsController@create')->name('create');
+        Route::post('posts/create','PostsController@store')->name('store');
+        Route::get('posts/{id?}/edit', 'PostsController@edit')->name('edit');
+        Route::post('posts/{id?}/edit','PostsController@update')->name('update');
     });
     
 });

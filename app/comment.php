@@ -9,6 +9,6 @@ class comment extends Model
    protected $guarded = ['id'];
 
     function ticket(){
-        return $this->belongsTo('App\Ticket');
+        return $this->morphTo;
     }
 }

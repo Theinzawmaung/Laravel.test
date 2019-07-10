@@ -6,7 +6,7 @@
 
   <div class="row justify-content-center">
       <div class="col-md-8">
-            <h1 class="">All  Tickets</h1>
+            <h1 class="">All  Posts</h1>
            @include('includes/status')
 
           <table class="table">
@@ -36,7 +36,7 @@
 @endsection
 
 @section('title')
-    All Tickets
+    Al
 
    
 @endsection

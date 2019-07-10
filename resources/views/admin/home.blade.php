@@ -25,6 +25,14 @@
           </div>
 
           <div class="card" style="margin:20px 0;">
+            <h4 class="card-header">Manage Categories</h4>
+            <div class="card-body">
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-light"> All Categories</a>
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Create Category</a>
+            </div>
+          </div>
+
+          <div class="card" style="margin:20px 0;">
             <h4 class="card-header">Manage Posts</h4>
             <div class="card-body">
             <a href="{{ route('admin.posts.index') }}" class="btn btn-light"> All Posts</a>

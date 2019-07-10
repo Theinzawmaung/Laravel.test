@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Http\Requests\StorePost;
 use Illuminate\Support\Str;
+use App\Category;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -17,7 +20,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('admin.posts.index',compact('posts'));
     }
 
     /**
@@ -27,7 +31,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::All();
+        return view('admin.posts.create',compact('categories'));
     }
 
     /**
@@ -39,11 +44,15 @@ class PostsController extends Controller
     public function store(StorePost $request)
     {
         $slug = Str::slug($request->title,'-');
-        Post::create([
+        $user_id = Auth::user()->id;
+         $post = Post::create([
             'title'=>$request->get('title'),
             'content'=>$request->content ,
-            'slug'=>$slug     
+            'slug'=>$slug , 
+            'user_id'=>$user_id  
              ]);
+             $post->categories()->sync($request->get('categories'));
+
              return redirect()->back()->with('status','Post has been created successfuly!');
     }
 
@@ -66,7 +75,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categories = Category::all();
+        $selectCategories = $post->categories->pluck('id')->ToArray();
+        return view('admin.posts.edit',compact('categories','post','selectCategories'));
     }
 
     /**
@@ -78,7 +90,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->slug = Str::slug($request->title,'-');
+
+        $post->save();
+        $post->categories()->sync($request->get('categories'));
+        return redirect()->back()->with('status','Post has been updated successfuly!');
+
     }
 
     /**

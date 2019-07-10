@@ -1,5 +1,14 @@
 <?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
 use App\Http\Controllers\TicketsController;
+use Symfony\Component\Routing\Annotation\Route;
+use Illuminate\Routing\Route;
+use Symfony\Component\Routing\Route;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Route;*/
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +57,12 @@ Route::get('/contact', 'TicketsController@create')->name('create');
         Route::get('users/{id?}/edit', 'UsersController@edit')->name('edit');
         Route::post('users/{id?}/edit','UsersController@update')->name('update');
     });
+        Route::name('categories.')->group(function(){
+        Route::get('categories', 'CategoriesController@index')->name('index');
+        Route::get('categories/create', 'CategoriesController@create')->name('create');
+        Route::post('categories/create', 'CategoriesController@store')->name('store');
+    });
+
     Route::name('posts.')->group(function(){
         Route::get('posts', 'PostsController@index')->name('index');
         Route::get('posts/create','PostsController@create')->name('create');
@@ -63,6 +78,8 @@ Route::get('/contact', 'TicketsController@create')->name('create');
 Route::post('comment','CommentsController@newComment')->name('newComment');
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('blog', 'BlogController@index')->name('index');
+Route::get('blog/{title?}', 'BlogController@show')->name('show');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

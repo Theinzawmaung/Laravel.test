@@ -15,7 +15,7 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::All();
-        return view('blog.index',compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 
     /**
@@ -45,10 +45,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title)
+    public function show($slug)
     {
-        $posts = Post::where('title',$title)->firstOrFail();
-        return view('blog.show',compact('posts'));
+        $post = Post::where('slug', $slug)->firstOrFail();
+        return view('blog.show', compact('post'));
     }
 
     /**

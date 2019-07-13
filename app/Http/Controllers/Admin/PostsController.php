@@ -45,15 +45,16 @@ class PostsController extends Controller
     {
         $slug = Str::slug($request->title,'-');
         $user_id = Auth::user()->id;
-         $post = Post::create([
+        $post = Post::create([
             'title'=>$request->get('title'),
-            'content'=>$request->content ,
-            'slug'=>$slug , 
+            'content'=>$request->content,
+            'slug'=>$slug, 
             'user_id'=>$user_id  
-             ]);
-             $post->categories()->sync($request->get('categories'));
+        ]);
+        
+        $post->categories()->sync($request->get('categories'));
 
-             return redirect()->back()->with('status','Post has been created successfuly!');
+        return redirect()->back()->with('status','Post has been created successfuly!');
     }
 
     /**

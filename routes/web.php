@@ -78,8 +78,11 @@ Route::get('/contact', 'TicketsController@create')->name('create');
 Route::post('comment','CommentsController@newComment')->name('newComment');
 Auth::routes();
 
-Route::get('blog', 'BlogController@index')->name('index');
-Route::get('blog/{title?}', 'BlogController@show')->name('show');
+Route::name('blog.')->group(function() {
+    Route::get('blog', 'BlogController@index')->name('index');
+    Route::get('blog/{slug?}', 'BlogController@show')->name('show');
+});
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

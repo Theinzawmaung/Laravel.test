@@ -48,6 +48,7 @@
                     @csrf
                     <div class="form-group">
                     <input type="hidden" name="post_id" value="{{ $ticket->id }}">
+                    <input type="hidden" name="post_type" id="" value="App/post">
                         <textarea name="comment" id="" class="form-control" cols="30" rows="5"></textarea>
                     </div>
                     <input type="reset" class="btn btn-light" value="Cancel">

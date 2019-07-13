@@ -48,7 +48,8 @@ class BlogController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-        return view('blog.show', compact('post'));
+        $comments = $post->comments()->get();
+        return view('blog.show', compact('post','comments'));
     }
 
     /**

@@ -13,6 +13,6 @@ class Post extends Model
     }
 
     function comments(){
-        return $this->morphMany('App\comment','ticket');
+        return $this->morphMany('App\Comment', 'post');
     }
 }

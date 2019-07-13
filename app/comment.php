@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class comment extends Model
+class Comment extends Model
 {
    protected $guarded = ['id'];
 
-    function ticket(){
-        return $this->morphTo;
+    function post(){
+        return $this->morphTo();
     }
 }

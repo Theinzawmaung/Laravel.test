@@ -9,6 +9,6 @@ class Ticket extends Model
     protected $guarded = ['id'];
 
     function comments(){
-        return $this->morphMany('App\comment','post');
+        return $this->morphMany('App\Comment', 'post');
     }
 }

@@ -14,8 +14,8 @@
              <div class="card" style="margin:33px 0;">
                  <div class="card-body">
                  <h4 class="card-title">{{ $post->title }}</h4>
-                 <p>{{ \Illuminate\Support\Str::limit($post->content,100, '.....')}}</p>
-                 <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-light">Read More</a>
+                 <p>{!! \Illuminate\Support\Str::limit($post->content, 100, '<a href="'. route('blog.show', $post->slug) .'">.........</a>') !!}</p>
+                 <a href="{{ route('blog.show', $post->slug) }}" class="btn btn-link">Read More</a>
                  
                  </div>
              </div>

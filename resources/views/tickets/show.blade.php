@@ -43,12 +43,12 @@
         <div class="card">
             <h5 class="card-header">Replay</h5>
             <div class="card-body">
-                    @include('includes/status')
-            <form action="{{ Route('newComment',$ticket->slug) }}" method="post">
+                @include('includes/status')
+                <form action="{{ route('newComment') }}" method="post">
                     @csrf
                     <div class="form-group">
-                    <input type="hidden" name="post_id" value="{{ $ticket->id }}">
-                    <input type="hidden" name="post_type" id="" value="App/post">
+                        <input type="hidden" name="post_id" value="{{ $ticket->id }}">
+                        <input type="hidden" name="post_type" id="" value="App\Ticket">
                         <textarea name="comment" id="" class="form-control" cols="30" rows="5"></textarea>
                     </div>
                     <input type="reset" class="btn btn-light" value="Cancel">

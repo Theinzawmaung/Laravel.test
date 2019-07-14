@@ -47,10 +47,10 @@ class TicketsController extends Controller
         $data = array(
             'ticket' => $ticket['slug'],
             );
-            Mail::send('emails.ticket', $data, function ($message) {
-            $message->from('theinzawmaung067@gmail.com', 'Theinzawmaung');
-            $message->to('theinzawmaung067@gmail.com')->subject('There is a new ticket!');
-            });
+           // Mail::send('emails.ticket', $data, function ($message) {
+              //  $message->from('theinzawmaung067@gmail.com', 'Theinzawmaung');
+              //  $message->to('theinzawmaung067@gmail.com')->subject('There is a new ticket!');
+          //  });
 
         return redirect( url('contact') )->with('status','Your ticket has been submitted');
     }
